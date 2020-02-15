@@ -1,12 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
-import { Container } from './styles';
+import styles from './styles';
 
 export default function Login() {
   return (
-    <Container>
+    <View style={styles.container}>
       <Text>Hello World</Text>
-    </Container>
+    </View>
   );
 }
