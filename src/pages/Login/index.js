@@ -3,12 +3,13 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Text,
-  TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
   SafeAreaView,
   View,
 } from 'react-native';
+
+import Input from '~/components/Input';
 
 import styles from './styles';
 
@@ -21,7 +22,7 @@ export default function Login() {
       <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View>
-            <TextInput
+            <Input
               keyboardType="email-address"
               autoCorrect={false}
               autoCapitalize="none"
@@ -29,7 +30,7 @@ export default function Login() {
               value={email}
               onChangeText={setEmail}
             />
-            <TextInput
+            <Input
               secureTextEntry
               keyboardType="default"
               autoCorrect={false}
