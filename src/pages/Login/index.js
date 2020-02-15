@@ -21,7 +21,7 @@ export default function Login() {
     <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }} enabled>
       <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View>
+          <View style={styles.containerForm}>
             <Input
               keyboardType="email-address"
               autoCorrect={false}
