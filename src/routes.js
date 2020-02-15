@@ -1,8 +1,9 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Main from './pages/Main';
-import Login from './pages/Login';
+import Login from '~/pages/Login';
+import Main from '~/pages/Main';
+import SignUp from '~/pages/SignUp';
 
 const unlockedContent = createStackNavigator(
   {
@@ -22,6 +23,7 @@ const unlockedContent = createStackNavigator(
 
 const lockedContent = createSwitchNavigator({
   Login,
+  SignUp,
 });
 
 const allContent = createSwitchNavigator({

@@ -11,13 +11,15 @@ import {
   View,
 } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import Button from '~/components/Button';
 import Input from '~/components/Input';
 import api from '~/services/api';
 
 import styles from './styles';
 
-export default function Login() {
+export default function Login({ navigation }) {
   const [registryCode, setRegistryCode] = useState('');
   const [password, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -71,7 +73,10 @@ export default function Login() {
               </Button>
             </>
 
-            <TouchableOpacity style={styles.link} onPress={() => {}}>
+            <TouchableOpacity
+              style={styles.link}
+              onPress={() => navigation.navigate('SignUp')}
+            >
               <Text style={styles.txtLink}>Criar conta gratuita</Text>
             </TouchableOpacity>
           </View>
@@ -80,3 +85,9 @@ export default function Login() {
     </KeyboardAvoidingView>
   );
 }
+
+Login.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
