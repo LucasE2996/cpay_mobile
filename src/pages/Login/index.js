@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -9,13 +9,20 @@ import {
   View,
 } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import Input from '~/components/Input';
 
 import styles from './styles';
 
-export default function Login() {
+export default function Login(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { navigation } = props;
+
+  useEffect(() => {
+    navigation.navigate('Main');
+  }, []);
 
   return (
     <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }} enabled>
@@ -48,3 +55,9 @@ export default function Login() {
     </KeyboardAvoidingView>
   );
 }
+
+Login.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};

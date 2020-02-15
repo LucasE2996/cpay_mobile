@@ -1,8 +1,10 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
-import Main from './pages/Main';
+import { colors } from '~/styles';
+
 import Login from './pages/Login';
+import Main from './pages/Main';
 
 const unlockedContent = createStackNavigator(
   {
@@ -13,7 +15,7 @@ const unlockedContent = createStackNavigator(
     headerBackTitleVisible: false,
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: '#42BBFF',
+        backgroundColor: colors.background,
       },
       headerTintColor: '#FFF',
     },
