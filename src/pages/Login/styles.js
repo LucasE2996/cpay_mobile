@@ -12,4 +12,11 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 15,
   },
+  button: {
+    backgroundColor: colors.blue,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
 });

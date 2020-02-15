@@ -3,12 +3,13 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Text,
-  TouchableOpacity,
   TouchableWithoutFeedback,
+  Platform,
   SafeAreaView,
   View,
 } from 'react-native';
 
+import Button from '~/components/Button';
 import Input from '~/components/Input';
 
 import styles from './styles';
@@ -18,7 +19,11 @@ export default function Login() {
   const [password, setPassword] = useState('');
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={{ flex: 1 }} enabled>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : null}
+      style={{ flex: 1 }}
+      enabled
+    >
       <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.containerForm}>
@@ -39,9 +44,10 @@ export default function Login() {
               value={password}
               onChangeText={setPassword}
             />
-            <TouchableOpacity onPress={() => {}}>
-              <Text>Acessar</Text>
-            </TouchableOpacity>
+
+            <Button style={styles.button} onPress={() => {}}>
+              Acessar
+            </Button>
           </View>
         </TouchableWithoutFeedback>
       </SafeAreaView>
