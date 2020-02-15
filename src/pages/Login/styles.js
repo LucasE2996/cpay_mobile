@@ -19,4 +19,16 @@ export default StyleSheet.create({
     justifyContent: 'center',
     padding: 10,
   },
+  link: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  txtLink: {
+    color: colors.white,
+    fontSize: 16,
+  },
+  errors: {
+    color: colors.red,
+    marginBottom: 3,
+  },
 });
