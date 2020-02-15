@@ -15,7 +15,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['react', 'prettier', 'jsx-a11y', 'import', 'import-helpers'],
   rules: {
     'prettier/prettier': 'error',
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
@@ -23,6 +23,19 @@ module.exports = {
     'arrow-parens': 'off',
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-console': ['error', { allow: ['warn', 'error'] }],
+    'import-helpers/order-imports': [
+      'warn',
+      {
+        newlinesBetween: 'always',
+        groups: [
+          '/^react/',
+          'module',
+          '/^~/',
+          [('parent', 'sibling', 'index')],
+        ],
+        alphabetize: { order: 'asc', ignoreCase: true },
+      },
+    ],
   },
   settings: {
     'import/resolver': {
