@@ -5,6 +5,8 @@ import Login from '~/pages/Login';
 import Main from '~/pages/Main';
 import SignUp from '~/pages/SignUp';
 
+import { colors } from '~/styles';
+
 const unlockedContent = createStackNavigator(
   {
     Main,
@@ -14,7 +16,7 @@ const unlockedContent = createStackNavigator(
     headerBackTitleVisible: false,
     defaultNavigationOptions: {
       headerStyle: {
-        backgroundColor: '#42BBFF',
+        backgroundColor: colors.background,
       },
       headerTintColor: '#FFF',
     },

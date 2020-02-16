@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Alert,
   Keyboard,
@@ -34,6 +34,7 @@ export default function Login({ navigation }) {
       Alert.alert('Erro', 'Encontramos um erro, tente novamente mais tarde!');
     }
   }
+
 
   return (
     <KeyboardAvoidingView
