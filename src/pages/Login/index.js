@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   Alert,
+  Image,
   Keyboard,
   KeyboardAvoidingView,
   Text,
@@ -19,6 +20,9 @@ import api from '~/services/api';
 
 import styles from './styles';
 
+const back = require('~/assets/login_retangule.png');
+const logo = require('~/assets/logo.png');
+
 export default function Login({ navigation }) {
   const [registryCode, setRegistryCode] = useState('');
   const [password, setEmail] = useState('');
@@ -35,7 +39,6 @@ export default function Login({ navigation }) {
     }
   }
 
-
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : null}
@@ -45,8 +48,16 @@ export default function Login({ navigation }) {
       <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.containerForm}>
-            <>
+            <View style={styles.logo}>
+              <Image source={back} />
+              <View style={{ position: 'absolute' }}>
+                <Image style={styles.logoImg} source={logo} />
+                <Text style={styles.title}>C-pay</Text>
+              </View>
+            </View>
+            <View style={styles.form}>
               <Input
+                label="CPF"
                 keyboardType="number-pad"
                 autoCorrect={false}
                 autoCapitalize="none"
@@ -56,6 +67,7 @@ export default function Login({ navigation }) {
                 onChangeText={setRegistryCode}
               />
               <Input
+                label="Senha"
                 secureTextEntry
                 keyboardType="default"
                 autoCorrect={false}
@@ -72,13 +84,13 @@ export default function Login({ navigation }) {
               >
                 Acessar
               </Button>
-            </>
+            </View>
 
             <TouchableOpacity
               style={styles.link}
               onPress={() => navigation.navigate('SignUp')}
             >
-              <Text style={styles.txtLink}>Criar conta gratuita</Text>
+              <Text style={styles.txtLink}>Criar conta</Text>
             </TouchableOpacity>
           </View>
         </TouchableWithoutFeedback>

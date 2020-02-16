@@ -7,12 +7,18 @@ export default StyleSheet.create({
     borderColor: colors.gray,
     borderWidth: 1,
     borderRadius: 10,
-    marginBottom: 5,
-    backgroundColor: colors.white,
+    marginBottom: 13,
+    backgroundColor: colors.input,
   },
   input: {
-    fontSize: 18,
+    fontSize: 14,
     color: colors.black,
     marginLeft: 10,
+    height: 39,
+  },
+  label: {
+    fontSize: 14,
+    marginBottom: 0,
+    color: colors.white,
   },
 });

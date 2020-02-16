@@ -7,9 +7,13 @@ export default StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
+    height: 39,
   },
   txtButton: {
-    fontSize: 18,
-    color: colors.white,
+    fontSize: 14,
+    color: colors.black_btn,
+    textTransform: 'uppercase',
+    lineHeight: 16,
+    fontWeight: 'bold',
   },
 });

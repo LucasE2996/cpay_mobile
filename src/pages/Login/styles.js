@@ -6,14 +6,20 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    justifyContent: 'center',
   },
   containerForm: {
     justifyContent: 'center',
-    padding: 15,
+    paddingHorizontal: 41,
+  },
+  form: { marginTop: 40 },
+  title: {
+    fontWeight: 'bold',
+    fontSize: 40,
+    color: colors.white,
+    marginTop: 19,
   },
   button: {
-    backgroundColor: colors.blue,
+    backgroundColor: colors.yellow,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -25,6 +31,16 @@ export default StyleSheet.create({
   },
   txtLink: {
     color: colors.white,
-    fontSize: 16,
+    fontSize: 12,
+    lineHeight: 14,
+    fontWeight: '500',
+  },
+  logo: {
+    alignItems: 'center',
+  },
+  logoImg: {
+    width: 126,
+    height: 126,
+    marginTop: 50,
   },
 });
