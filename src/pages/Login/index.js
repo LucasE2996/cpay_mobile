@@ -80,7 +80,7 @@ export default function Login({ navigation }) {
               <Button
                 loading={loading}
                 style={styles.button}
-                onPress={handleSubmit}
+                onPress={() => navigation.navigate('Main')}
               >
                 Acessar
               </Button>
