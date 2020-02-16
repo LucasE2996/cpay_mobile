@@ -6,7 +6,9 @@ const colors = {
   black: '#000',
   border: '#282A36',
   purpleDark: '#7B7F9E',
-  yellow: '#FFAC30',
+  yellow: '#FFF947',
+  blue: '#25EAFA',
+  red: '#FF4404',
 };
 
 export default colors;
