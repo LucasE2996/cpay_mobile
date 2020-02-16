@@ -20,7 +20,7 @@ import api from '~/services/api';
 
 import styles from './styles';
 
-const back = require('~/assets/login_retangule.png');
+const back = require('~/assets/login_rectangle.png');
 const logo = require('~/assets/logo.png');
 
 export default function Login({ navigation }) {

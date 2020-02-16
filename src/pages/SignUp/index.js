@@ -3,11 +3,11 @@ import {
   Keyboard,
   KeyboardAvoidingView,
   Text,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   Platform,
   SafeAreaView,
   View,
+  Image,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
@@ -17,6 +17,8 @@ import Input from '~/components/Input';
 import api from '~/services/api';
 
 import styles from './styles';
+
+const back = require('~/assets/register_rectangle.png');
 
 export default function SignUp({ navigation }) {
   const [register, setRegister] = useState('');
@@ -42,12 +44,19 @@ export default function SignUp({ navigation }) {
       <SafeAreaView style={styles.container}>
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
           <View style={styles.containerForm}>
+            <View style={styles.logo}>
+              <Image source={back} />
+              <View style={{ position: 'absolute' }}>
+                <Text style={styles.title}>Cadastrar</Text>
+              </View>
+            </View>
             <>
               <Input
+                label="Nome"
                 keyboardType="default"
                 autoCorrect={false}
                 autoCapitalize="none"
-                placeholder="Digite seu nome"
+                placeholder="Insira seu nome completo"
                 maxLength={11}
                 value={register.name}
                 onChangeText={text => {
@@ -55,10 +64,11 @@ export default function SignUp({ navigation }) {
                 }}
               />
               <Input
+                label="CPF/CNPJ"
                 keyboardType="number-pad"
                 autoCorrect={false}
                 autoCapitalize="none"
-                placeholder="Digite seu CPF"
+                placeholder="Insira seu CPF"
                 maxLength={11}
                 value={register.registryCode}
                 onChangeText={text => {
@@ -66,23 +76,26 @@ export default function SignUp({ navigation }) {
                 }}
               />
               <Input
+                label="E-mail"
                 keyboardType="email-address"
                 autoCorrect={false}
                 autoCapitalize="none"
-                placeholder="Digite seu email"
+                placeholder="Insira seu e-mail"
                 value={register.email}
                 onChangeText={text => {
                   setRegister({ ...register, email: text });
                 }}
               />
               <Input
-                keyboardType="phone-pad"
+                label="Senha"
+                secureTextEntry
+                keyboardType="default"
                 autoCorrect={false}
                 autoCapitalize="none"
-                placeholder="Digite seu telefone"
-                value={register.phone}
+                placeholder="Insira sua senha"
+                value={register.password}
                 onChangeText={text => {
-                  setRegister({ ...register, phone: text });
+                  setRegister({ ...register, password: text });
                 }}
               />
 
@@ -93,13 +106,13 @@ export default function SignUp({ navigation }) {
               >
                 Criar conta
               </Button>
-
-              <TouchableOpacity
-                style={styles.link}
+              <Button
+                loading={loading}
+                style={[styles.button, styles.buttonCancelled]}
                 onPress={() => navigation.navigate('Login')}
               >
-                <Text style={styles.txtLink}>Já tenho conta</Text>
-              </TouchableOpacity>
+                Cancelar
+              </Button>
             </>
           </View>
         </TouchableWithoutFeedback>

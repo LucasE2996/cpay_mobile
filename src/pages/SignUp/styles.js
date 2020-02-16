@@ -6,14 +6,14 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    justifyContent: 'center',
   },
   containerForm: {
     justifyContent: 'center',
-    padding: 15,
+    paddingHorizontal: 35,
   },
   button: {
-    backgroundColor: colors.blue,
+    marginTop: 15,
+    backgroundColor: colors.yellow,
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
@@ -26,5 +26,20 @@ export default StyleSheet.create({
   txtLink: {
     color: colors.white,
     fontSize: 16,
+  },
+  logo: {
+    alignItems: 'center',
+    marginBottom: 52,
+  },
+  title: {
+    fontSize: 40,
+    lineHeight: 47,
+    fontWeight: 'bold',
+    color: colors.yellow,
+    marginTop: 54,
+  },
+  buttonCancelled: {
+    backgroundColor: colors.gray,
+    marginTop: 8,
   },
 });
