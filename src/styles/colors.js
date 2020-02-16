@@ -6,7 +6,7 @@ const colors = {
   black: '#000',
   border: '#282A36',
   purpleDark: '#7B7F9E',
-  yellow: '#FFF947',
+  yellow: '#F29D35',
   blue: '#25EAFA',
   red: '#FF4404',
 };
