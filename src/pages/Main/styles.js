@@ -11,7 +11,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#b2b2b2',
     height: 32,
     marginHorizontal: 25,
     marginVertical: 30,
@@ -29,7 +28,7 @@ export default StyleSheet.create({
   },
   box: {
     paddingHorizontal: 25,
-    paddingVertical: 30,
+    paddingVertical: 10,
   },
   boxHeader: {
     flexDirection: 'row',
@@ -40,14 +39,15 @@ export default StyleSheet.create({
   boxTitle: {
     fontSize: 16,
     color: colors.gray,
+    fontWeight: 'bold',
   },
   bigCard: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: colors.gray,
+    backgroundColor: colors.backgroundLight,
     padding: 20,
-    borderRadius: 5,
+    borderRadius: 10,
     height: 120,
   },
   bigCardText: {
@@ -61,6 +61,11 @@ export default StyleSheet.create({
     fontWeight: '300',
   },
   bigCardLeft: {
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  rowContent: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
