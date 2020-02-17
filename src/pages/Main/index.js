@@ -56,6 +56,12 @@ export default function Main({ navigation }) {
     chargedCustomers();
   }, []);
 
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+  });
+
   const dummyTransactions = [
     {
       name: 'Lucas Rosa',
@@ -107,7 +113,7 @@ export default function Main({ navigation }) {
         </View>
         <View style={styles.bigCard}>
           <View style={styles.bigCardLeft}>
-            <Text style={styles.bigCardText}>{`R$ ${balance}`}</Text>
+            <Text style={styles.bigCardText}>{formatter.format(balance)}</Text>
           </View>
           <PlusButton callback={() => console.warn('button plus clicked')} />
         </View>

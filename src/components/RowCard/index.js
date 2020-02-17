@@ -11,22 +11,18 @@ import styles from './styles';
 function RowCard({ data }) {
   const { name, moneyValue, date, photoUrl } = data;
 
-  function formatMoney(value) {
-    const splitValue = value.toString(10).split('.');
-
-    if (splitValue.length < 2) {
-      splitValue.push('00');
-    }
-
-    return `R$ ${splitValue[0]},${splitValue[1]}`;
-  }
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+  });
 
   function formatDate(date) {
     moment.locale('pt');
     return moment(date).format('d MMM');
   }
 
-  const moneyString = formatMoney(moneyValue);
+  const moneyString = formatter.format(moneyValue);
   const formatedDate = formatDate(date);
 
   return (
