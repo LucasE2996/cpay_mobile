@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import logo from '~/assets/logo.png';
 import menu from '~/assets/menu.png';
 import ContactCard from '~/components/ContactCard';
+import CreateModal from '~/components/Modal';
 import PlusButton from '~/components/PlusButton';
 import RowCard from '~/components/RowCard';
 import api from '~/services/api';
@@ -19,6 +20,11 @@ export default function Main({ navigation }) {
   const [token, setToken] = useState('');
   const [balance, setBalance] = useState(0);
   const [chargeCustomer, setChargeCustomer] = useState([]);
+  const [modal, setModal] = useState(false);
+
+  const closePanel = () => {
+    setModal(false);
+  };
 
   async function getBalance() {
     try {
@@ -115,8 +121,15 @@ export default function Main({ navigation }) {
           <View style={styles.bigCardLeft}>
             <Text style={styles.bigCardText}>{formatter.format(balance)}</Text>
           </View>
-          <PlusButton callback={() => console.warn('button plus clicked')} />
+          <PlusButton callback={() => setModal(!modal)} />
         </View>
+        <CreateModal
+          display={modal}
+          closeModal={closePanel}
+          titleModal="Fazer cashin"
+        >
+          <Text>Modal</Text>
+        </CreateModal>
       </View>
       <View style={styles.box}>
         <View style={styles.boxHeader}>
