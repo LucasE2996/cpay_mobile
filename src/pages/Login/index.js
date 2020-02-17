@@ -28,6 +28,10 @@ export default function Login({ navigation }) {
   const [password, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    navigation.navigate('Main');
+  }, []);
+
   async function handleSubmit() {
     try {
       setLoading(true);

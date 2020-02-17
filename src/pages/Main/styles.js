@@ -6,6 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingTop: 10,
   },
   header: {
     flexDirection: 'row',
@@ -68,5 +69,13 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  },
+  logo: {
+    width: 30,
+    height: 30,
+  },
+  menu: {
+    width: 30,
+    height: 30,
   },
 });
