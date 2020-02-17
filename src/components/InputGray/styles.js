@@ -4,11 +4,11 @@ import { colors } from '~/styles';
 
 export default StyleSheet.create({
   container: {
-    borderColor: colors.gray,
+    borderColor: colors.backgroundLight,
     borderWidth: 1,
     borderRadius: 10,
-    marginBottom: 13,
-    backgroundColor: colors.input,
+    marginBottom: 42,
+    backgroundColor: colors.backgroundLight,
   },
   input: {
     fontSize: 14,
@@ -19,7 +19,7 @@ export default StyleSheet.create({
   label: {
     fontSize: 14,
     marginBottom: 0,
-    color: colors.white,
+    color: colors.purpleDark,
     fontWeight: 'bold',
     lineHeight: 18,
   },

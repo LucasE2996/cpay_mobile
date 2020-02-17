@@ -2,6 +2,8 @@ import React from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import PropTypes from 'prop-types';
+
 import logo from '~/assets/logo.png';
 import menu from '~/assets/menu.png';
 import ContactCard from '~/components/ContactCard';
@@ -10,7 +12,7 @@ import RowCard from '~/components/RowCard';
 
 import styles from './styles';
 
-export default function Main() {
+export default function Main({ navigation }) {
   const dummyContacts = [
     {
       name: 'Lucas Rosa',
@@ -95,7 +97,7 @@ export default function Main() {
           <Text style={styles.boxTitle}>Enviar cobrança</Text>
         </View>
         <View style={styles.rowContent}>
-          <PlusButton callback={() => console.warn('button plus clicked')} />
+          <PlusButton callback={() => navigation.navigate('Charge')} />
           <FlatList
             style={{ marginLeft: 15 }}
             horizontal
@@ -122,5 +124,11 @@ export default function Main() {
     </View>
   );
 }
+
+Main.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
 
 Main.navigationOptions = { header: null };

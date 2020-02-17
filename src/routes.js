@@ -1,20 +1,20 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
+import Charge from '~/pages/Charge';
 import Login from '~/pages/Login';
 import Main from '~/pages/Main';
 import SignUp from '~/pages/SignUp';
-
 import { colors } from '~/styles';
 
 const unlockedContent = createStackNavigator(
   {
     Main,
+    Charge,
   },
   {
-    headerLayoutPreset: 'center',
-    headerBackTitleVisible: false,
     defaultNavigationOptions: {
+      headerTitleAlign: 'center',
       headerStyle: {
         backgroundColor: colors.background,
       },
@@ -34,6 +34,10 @@ const allContent = createSwitchNavigator({
   },
   App: {
     screen: unlockedContent,
+    navigationOptions: {
+      headerBackTitleVisible: false,
+      headerShown: false,
+    },
   },
 });
 
