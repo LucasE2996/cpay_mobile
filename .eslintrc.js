@@ -23,6 +23,7 @@ module.exports = {
     'arrow-parens': 'off',
     'no-plusplus': ['error', { allowForLoopAfterthoughts: true }],
     'no-console': ['error', { allow: ['warn', 'error'] }],
+    'react/jsx-props-no-spreading': 'off',
     'import-helpers/order-imports': [
       'warn',
       {
