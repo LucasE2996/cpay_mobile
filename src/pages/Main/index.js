@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import AsyncStorage from '@react-native-community/async-storage';
 import PropTypes from 'prop-types';
@@ -10,6 +11,7 @@ import ContactCard from '~/components/ContactCard';
 import PlusButton from '~/components/PlusButton';
 import RowCard from '~/components/RowCard';
 import api from '~/services/api';
+import { colors } from '~/styles';
 
 import styles from './styles';
 
@@ -34,14 +36,11 @@ export default function Main({ navigation }) {
       const asyncToken = await AsyncStorage.getItem('@cpay:user_token');
 
       setToken(asyncToken);
+      await getBalance();
     }
 
     getToken();
   }, []);
-
-  useEffect(() => {
-    getBalance();
-  }, [balance]);
 
   const dummyContacts = [
     {
@@ -113,7 +112,7 @@ export default function Main({ navigation }) {
       <View style={styles.box}>
         <View style={styles.boxHeader}>
           <Text style={styles.boxTitle}>Saldo disponível</Text>
-          <Text>OLHO</Text>
+          <FontAwesome name="eye" size={20} color={colors.gray} />
         </View>
         <View style={styles.bigCard}>
           <View style={styles.bigCardLeft}>
@@ -161,4 +160,4 @@ Main.propTypes = {
   }).isRequired,
 };
 
-Main.navigationOptions = { header: null };
+Main.navigationOptions = { headerShown: false };
