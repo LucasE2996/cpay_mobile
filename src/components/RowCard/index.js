@@ -1,10 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
 import moment from 'moment';
 import 'moment/min/locales';
-
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import PhotoIcon from '~/components/PhotoIcon';
 

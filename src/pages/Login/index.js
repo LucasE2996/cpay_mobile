@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Alert,
   Image,
   Keyboard,
   KeyboardAvoidingView,
@@ -12,6 +11,7 @@ import {
   View,
 } from 'react-native';
 
+import AsyncStorage from '@react-native-community/async-storage';
 import PropTypes from 'prop-types';
 
 import Button from '~/components/Button';
@@ -25,21 +25,24 @@ const logo = require('~/assets/logo.png');
 
 export default function Login({ navigation }) {
   const [registryCode, setRegistryCode] = useState('');
-  const [password, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    navigation.navigate('Main');
-  }, []);
 
   async function handleSubmit() {
     try {
       setLoading(true);
-      const response = await api.get('/login', { registryCode, password });
+      const response = await api.post('/customer_token', {
+        auth: { national_registry_code: registryCode, password },
+      });
+
+      await AsyncStorage.setItem('@cpay:user_token', response.data.jwt);
+
+      setRegistryCode('');
+      setPassword('');
       setLoading(false);
+      navigation.navigate('Main');
     } catch (error) {
       setLoading(false);
-      Alert.alert('Erro', 'Encontramos um erro, tente novamente mais tarde!');
     }
   }
 
@@ -78,13 +81,13 @@ export default function Login({ navigation }) {
                 autoCapitalize="none"
                 placeholder="Digite sua senha"
                 value={password}
-                onChangeText={setEmail}
+                onChangeText={setPassword}
               />
 
               <Button
                 loading={loading}
                 style={styles.button}
-                onPress={() => navigation.navigate('Main')}
+                onPress={handleSubmit}
               >
                 Acessar
               </Button>

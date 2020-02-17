@@ -1,7 +1,7 @@
-import React from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 
+import AsyncStorage from '@react-native-community/async-storage';
 import PropTypes from 'prop-types';
 
 import logo from '~/assets/logo.png';
@@ -9,10 +9,40 @@ import menu from '~/assets/menu.png';
 import ContactCard from '~/components/ContactCard';
 import PlusButton from '~/components/PlusButton';
 import RowCard from '~/components/RowCard';
+import api from '~/services/api';
 
 import styles from './styles';
 
 export default function Main({ navigation }) {
+  const [token, setToken] = useState('');
+  const [balance, setBalance] = useState(0);
+
+  async function getBalance() {
+    try {
+      const response = await api.get('/balance', {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setBalance(response.data.balance);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    async function getToken() {
+      const asyncToken = await AsyncStorage.getItem('@cpay:user_token');
+
+      setToken(asyncToken);
+    }
+
+    getToken();
+  }, []);
+
+  useEffect(() => {
+    getBalance();
+  }, [balance]);
+
   const dummyContacts = [
     {
       name: 'Lucas Rosa',
@@ -87,7 +117,7 @@ export default function Main({ navigation }) {
         </View>
         <View style={styles.bigCard}>
           <View style={styles.bigCardLeft}>
-            <Text style={styles.bigCardText}>R$ 20.600,25</Text>
+            <Text style={styles.bigCardText}>{`R$ ${balance}`}</Text>
           </View>
           <PlusButton callback={() => console.warn('button plus clicked')} />
         </View>
