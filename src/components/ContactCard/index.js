@@ -15,7 +15,9 @@ function ContactCard({ data }) {
       >
         <View style={styles.container}>
           <PhotoIcon />
-          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.name} numberOfLines={2}>
+            {name}
+          </Text>
         </View>
       </TouchableOpacity>
     </>

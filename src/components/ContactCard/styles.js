@@ -13,10 +13,12 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 10,
+    padding: 15,
   },
   name: {
-    marginTop: 20,
+    marginTop: 15,
     fontSize: 12,
     color: colors.purpleDark,
+    textAlign: 'center',
   },
 });

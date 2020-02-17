@@ -18,6 +18,7 @@ import styles from './styles';
 export default function Main({ navigation }) {
   const [token, setToken] = useState('');
   const [balance, setBalance] = useState(0);
+  const [chargeCustomer, setChargeCustomer] = useState([]);
 
   async function getBalance() {
     try {
@@ -26,6 +27,18 @@ export default function Main({ navigation }) {
       });
 
       setBalance(response.data.balance);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function chargedCustomers() {
+    try {
+      const response = await api.get(`/invoices?from=63188678053`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setChargeCustomer(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -40,30 +53,8 @@ export default function Main({ navigation }) {
     }
 
     getToken();
+    chargedCustomers();
   }, []);
-
-  const dummyContacts = [
-    {
-      name: 'Lucas Rosa',
-      photoUrl: '',
-    },
-    {
-      name: 'Maisa Maximo',
-      photoUrl: '',
-    },
-    {
-      name: 'Patric',
-      photoUrl: '',
-    },
-    {
-      name: 'Maurício Júnior',
-      photoUrl: '',
-    },
-    {
-      name: 'Claudemiro Freitas',
-      photoUrl: '',
-    },
-  ];
 
   const dummyTransactions = [
     {
@@ -132,9 +123,9 @@ export default function Main({ navigation }) {
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ padding: 10 }}
-            data={dummyContacts}
-            keyExtractor={item => String(item.name)}
-            renderItem={({ item }) => <ContactCard data={item} />}
+            data={chargeCustomer}
+            keyExtractor={item => String(item.id)}
+            renderItem={({ item }) => <ContactCard data={item.to_customer} />}
           />
         </View>
       </View>
