@@ -8,6 +8,8 @@ import {
   Keyboard,
 } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import Button from '~/components/Button';
 import InputGray from '~/components/InputGray';
 import InputGrayLarge from '~/components/InputGrayLarge';
@@ -37,6 +39,10 @@ export default function Charge({ navigation }) {
                 autoCorrect={false}
                 autoCapitalize="none"
                 maxLength={11}
+                values={charge.national_registry_code}
+                onChangeText={text => {
+                  setCharge({ ...charge, national_registry_code: text });
+                }}
               />
               <InputGrayLarge
                 label="Valor a ser cobrado"
@@ -44,18 +50,30 @@ export default function Charge({ navigation }) {
                 autoCorrect={false}
                 autoCapitalize="none"
                 defaultValue="R$ 0,00"
+                values={charge.amount}
+                onChangeText={text => {
+                  setCharge({ ...charge, amount: text });
+                }}
               />
               <InputGray
                 label="Data de vencimento"
                 keyboardType="number-pad"
                 autoCorrect={false}
                 autoCapitalize="none"
+                values={charge.due_date}
+                onChangeText={text => {
+                  setCharge({ ...charge, due_date: text });
+                }}
               />
               <InputGray
                 label="Descrição"
-                keyboardType="number-pad"
+                keyboardType="default"
                 autoCorrect={false}
                 autoCapitalize="none"
+                values={charge.description}
+                onChangeText={text => {
+                  setCharge({ ...charge, description: text });
+                }}
               />
 
               <Button style={styles.button} onPress={handleSubmit}>
@@ -71,4 +89,10 @@ export default function Charge({ navigation }) {
 
 Charge.navigationOptions = {
   title: 'Cobrança',
+};
+
+Charge.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
 };
