@@ -1,6 +1,9 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, Image } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
+import logo from '~/assets/logo.png';
+import menu from '~/assets/menu.png';
 import ContactCard from '~/components/ContactCard';
 import PlusButton from '~/components/PlusButton';
 import RowCard from '~/components/RowCard';
@@ -68,10 +71,12 @@ export default function Main() {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerLogo}>
-          <Text>LOGO</Text>
+          <Image source={logo} style={styles.logo} />
           <Text style={styles.headerText}>C-Pay</Text>
         </View>
-        <Text>MENU</Text>
+        <TouchableOpacity onPress={() => console.warn('menu pressed.')}>
+          <Image source={menu} style={styles.menu} />
+        </TouchableOpacity>
       </View>
       <View style={styles.box}>
         <View style={styles.boxHeader}>
@@ -88,7 +93,6 @@ export default function Main() {
       <View style={styles.box}>
         <View style={styles.boxHeader}>
           <Text style={styles.boxTitle}>Enviar cobrança</Text>
-          <Text>BTN</Text>
         </View>
         <View style={styles.rowContent}>
           <PlusButton callback={() => console.warn('button plus clicked')} />

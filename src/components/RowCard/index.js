@@ -1,6 +1,13 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import moment from 'moment';
+import 'moment/min/locales';
+
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import PhotoIcon from '~/components/PhotoIcon';
+
 import styles from './styles';
 
 function RowCard({ data }) {
@@ -16,21 +23,31 @@ function RowCard({ data }) {
     return `R$ ${splitValue[0]},${splitValue[1]}`;
   }
 
+  function formatDate(date) {
+    moment.locale('pt');
+    return moment(date).format('d MMM');
+  }
+
   const moneyString = formatMoney(moneyValue);
+  const formatedDate = formatDate(date);
 
   return (
     <>
       <View style={styles.container}>
-        <View styles={styles.leftContent}>
-          <Text style={{ padding: 10 }}>PHOTO</Text>
-          <View style={styles.textBox}>
-            <Text style={styles.name}>{name}</Text>
-            <Text style={styles.money}>{moneyString}</Text>
-          </View>
+        <PhotoIcon />
+        <View style={styles.textBox}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.money}>{moneyString}</Text>
         </View>
         <View styles={styles.rightContent}>
-          <Text style={styles.date}>{date}</Text>
-          <Text>BUTTON</Text>
+          <Text style={styles.date}>{formatedDate}</Text>
+          <TouchableOpacity
+            onPress={() => {
+              console.warn('pay btn pressed');
+            }}
+          >
+            <Text style={styles.payLink}>Pagar</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </>

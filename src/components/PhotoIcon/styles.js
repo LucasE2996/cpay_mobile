@@ -4,16 +4,11 @@ import { colors } from '~/styles';
 
 export default StyleSheet.create({
   container: {
-    width: 48,
-    height: 48,
-    backgroundColor: colors.yellow,
-    borderRadius: 24,
+    width: 50,
+    height: 50,
+    borderRadius: 50 / 2,
+    backgroundColor: colors.background,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    color: colors.background,
-    fontWeight: '100',
-    fontSize: 30,
   },
 });

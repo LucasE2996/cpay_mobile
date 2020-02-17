@@ -4,7 +4,6 @@ import { colors } from '~/styles';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
     borderRadius: 10,
     backgroundColor: colors.backgroundLight,
     borderColor: colors.border,
@@ -16,21 +15,14 @@ export default StyleSheet.create({
     marginBottom: 10,
     padding: 10,
   },
-  leftContent: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   rightContent: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   textBox: {
     flex: 1,
     justifyContent: 'space-between',
     alignItems: 'flex-start',
+    marginLeft: 10,
   },
   name: {
     fontSize: 9,
@@ -43,9 +35,15 @@ export default StyleSheet.create({
     fontWeight: 'bold',
   },
   date: {
-    fontSize: 9,
+    fontSize: 11,
     color: colors.purpleDark,
     textTransform: 'uppercase',
     marginBottom: 10,
+    alignSelf: 'flex-end',
+  },
+  payLink: {
+    color: colors.yellow,
+    textDecorationStyle: 'solid',
+    textDecorationLine: 'underline',
   },
 });
