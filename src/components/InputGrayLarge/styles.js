@@ -4,22 +4,25 @@ import { colors } from '~/styles';
 
 export default StyleSheet.create({
   container: {
-    borderColor: colors.gray,
+    borderColor: colors.backgroundLight,
     borderWidth: 1,
     borderRadius: 10,
-    marginBottom: 13,
-    backgroundColor: colors.input,
+    marginBottom: 42,
+    backgroundColor: colors.backgroundLight,
   },
   input: {
-    fontSize: 14,
-    color: colors.black,
+    fontSize: 24,
+    fontWeight: 'bold',
+    lineHeight: 28,
+    color: colors.white,
     marginLeft: 10,
-    height: 39,
+    height: 90,
+    padding: 30,
   },
   label: {
     fontSize: 14,
     marginBottom: 0,
-    color: colors.white,
+    color: colors.purpleDark,
     fontWeight: 'bold',
     lineHeight: 18,
   },

@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 
+import PropTypes from 'prop-types';
+
 import ContactCard from '~/components/ContactCard';
 import PlusButton from '~/components/PlusButton';
 import RowCard from '~/components/RowCard';
 
 import styles from './styles';
 
-export default function Main() {
+export default function Main({ navigation }) {
   const dummyContacts = [
     {
       name: 'Lucas Rosa',
@@ -91,7 +93,7 @@ export default function Main() {
           <Text>BTN</Text>
         </View>
         <View style={styles.rowContent}>
-          <PlusButton callback={() => console.warn('button plus clicked')} />
+          <PlusButton callback={() => navigation.navigate('Charge')} />
           <FlatList
             style={{ marginLeft: 15 }}
             horizontal
@@ -118,5 +120,11 @@ export default function Main() {
     </View>
   );
 }
+
+Main.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func,
+  }).isRequired,
+};
 
 Main.navigationOptions = { header: null };
