@@ -1,26 +1,27 @@
 import { StyleSheet } from 'react-native';
 
+import { heightPercentageToDP, widthPercentageToDP } from '~/config/PixelRatio';
 import { colors } from '~/styles';
 
 export default StyleSheet.create({
   container: {
     borderColor: colors.gray,
-    borderWidth: 1,
-    borderRadius: 10,
-    marginBottom: 13,
+    borderWidth: widthPercentageToDP('0.3%'),
+    borderRadius: heightPercentageToDP('2%'),
+    marginBottom: heightPercentageToDP('2%'),
     backgroundColor: colors.input,
   },
   input: {
-    fontSize: 14,
+    fontSize: heightPercentageToDP('2.30%'),
     color: colors.black,
-    marginLeft: 10,
-    height: 39,
+    marginLeft: widthPercentageToDP('2.8%'),
+    height: heightPercentageToDP('6%'),
   },
   label: {
-    fontSize: 14,
+    fontSize: heightPercentageToDP('2.30%'),
     marginBottom: 0,
     color: colors.white,
     fontWeight: 'bold',
-    lineHeight: 18,
+    lineHeight: heightPercentageToDP('2.35%'),
   },
 });

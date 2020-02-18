@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 
+import { heightPercentageToDP, widthPercentageToDP } from '~/config/PixelRatio';
 import { colors } from '~/styles';
 
 export default StyleSheet.create({
@@ -8,30 +9,30 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: heightPercentageToDP('2.1%'),
   },
   label: {
-    fontSize: 14,
+    fontSize: heightPercentageToDP('2.30%'),
     fontWeight: 'bold',
     color: colors.purpleDark,
-    marginBottom: 5,
+    marginBottom: heightPercentageToDP('1%'),
   },
   picker: {
-    borderRadius: 10,
+    borderRadius: heightPercentageToDP('2.1%'),
     overflow: 'hidden',
   },
   pickerType: {
     color: colors.white,
     backgroundColor: colors.backgroundLight,
-    width: 200,
-    height: 50,
-    borderRadius: 10,
+    width: widthPercentageToDP('55%'),
+    height: heightPercentageToDP('8.1%'),
+    borderRadius: heightPercentageToDP('2.1%'),
   },
   pickerDays: {
     color: colors.white,
     backgroundColor: colors.backgroundLight,
-    width: 100,
-    height: 50,
-    borderRadius: 10,
+    width: widthPercentageToDP('20%'),
+    height: heightPercentageToDP('8.1%'),
+    borderRadius: heightPercentageToDP('2.1%'),
   },
 });
