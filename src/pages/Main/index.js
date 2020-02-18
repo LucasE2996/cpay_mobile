@@ -98,18 +98,6 @@ export default function Main({ navigation }) {
       date: '2020-02-15T03:32:27.478Z',
       photoUrl: '',
     },
-    {
-      name: 'Lucas Rosa',
-      moneyValue: 85.02,
-      date: '2020-02-15T03:39:27.478Z',
-      photoUrl: '',
-    },
-    {
-      name: 'Lucas Rosa',
-      moneyValue: 89.0,
-      date: '2020-02-15T03:38:27.478Z',
-      photoUrl: '',
-    },
   ];
 
   return (
@@ -170,9 +158,25 @@ export default function Main({ navigation }) {
         </View>
       </View>
       <View style={styles.box}>
-        <Text style={styles.boxTitlePayment}>Contas pendentes</Text>
+        <View style={styles.boxReceive}>
+          <Text style={styles.boxTitlePayment}>Contas à receber</Text>
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={styles.txtMore}>Ver mais</Text>
+          </TouchableOpacity>
+        </View>
         {dummyTransactions.map(item => (
-          <RowCard data={item} />
+          <RowCard data={item} value="Configurar" />
+        ))}
+      </View>
+      <View style={styles.box}>
+        <View style={styles.boxReceive}>
+          <Text style={styles.boxTitlePayment}>Contas à pagar</Text>
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={styles.txtMore}>Ver mais</Text>
+          </TouchableOpacity>
+        </View>
+        {dummyTransactions.map(item => (
+          <RowCard data={item} value="Pagar" />
         ))}
       </View>
     </ScrollView>

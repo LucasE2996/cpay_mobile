@@ -82,4 +82,11 @@ export default StyleSheet.create({
     width: 30,
     height: 30,
   },
+  boxReceive: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  txtMore: {
+    color: colors.yellow,
+  },
 });

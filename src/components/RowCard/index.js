@@ -8,7 +8,7 @@ import PhotoIcon from '~/components/PhotoIcon';
 
 import styles from './styles';
 
-function RowCard({ data }) {
+function RowCard({ data, value }) {
   const { name, moneyValue, date, photoUrl } = data;
 
   const formatter = new Intl.NumberFormat('pt-BR', {
@@ -40,7 +40,7 @@ function RowCard({ data }) {
               console.warn('pay btn pressed');
             }}
           >
-            <Text style={styles.payLink}>Pagar</Text>
+            <Text style={styles.payLink}>{value}</Text>
           </TouchableOpacity>
         </View>
       </View>
