@@ -28,7 +28,7 @@ export default function CreateModal({
         style={styles.container}
       >
         <View style={styles.title}>
-          <Text style={styles.txtTitle}>{titleModal}</Text>
+          {titleModal && <Text style={styles.txtTitle}>{titleModal}</Text>}
 
           <TouchableOpacity onPress={closeModal}>
             <FontAwesome name="close" size={40} color={colors.purpleDark} />

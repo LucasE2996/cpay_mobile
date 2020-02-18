@@ -10,14 +10,14 @@ import {
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import AsyncStorage from '@react-native-community/async-storage';
-import 'intl';
 import PropTypes from 'prop-types';
 
+import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 
 import logo from '~/assets/logo.png';
-import menu from '~/assets/menu.png';
 import ContactCard from '~/components/ContactCard';
+import Deposit from '~/components/Deposit';
 import CreateModal from '~/components/Modal';
 import PlusButton from '~/components/PlusButton';
 import RowCard from '~/components/RowCard';
@@ -132,12 +132,8 @@ export default function Main({ navigation }) {
           </View>
           <PlusButton callback={() => setModal(!modal)} />
         </View>
-        <CreateModal
-          display={modal}
-          closeModal={closePanel}
-          titleModal="Fazer cashin"
-        >
-          <Text>Modal</Text>
+        <CreateModal display={modal} closeModal={closePanel}>
+          <Deposit navigation={navigation} />
         </CreateModal>
       </View>
       <View style={styles.box}>

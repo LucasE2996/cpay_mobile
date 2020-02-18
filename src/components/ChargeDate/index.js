@@ -18,8 +18,8 @@ function ContactCard({ data }) {
               style={styles.pickerType}
               onValueChange={itemValue => setType(itemValue)}
             >
-              <Picker.Item label="e-mail" value="e-mail" />
               <Picker.Item label="Whatsapp" value="Whatsapp" />
+              <Picker.Item label="sms" value="SMS" />
             </Picker>
           </View>
         </View>

@@ -80,6 +80,16 @@ export default function Charge({ navigation }) {
           <View style={styles.containerForm}>
             <>
               <InputGray
+                label="Nome"
+                keyboardType="default"
+                autoCorrect={false}
+                autoCapitalize="none"
+                values={charge.name}
+                onChangeText={text => {
+                  setCharge({ ...charge, name: text });
+                }}
+              />
+              <InputGray
                 label="CPF ou CNPJ"
                 keyboardType="number-pad"
                 autoCorrect={false}
