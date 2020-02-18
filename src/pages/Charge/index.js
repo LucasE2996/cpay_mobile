@@ -9,9 +9,9 @@ import {
 } from 'react-native';
 import { RNToasty } from 'react-native-toasty';
 
+import 'intl';
 import 'intl/locale-data/jsonp/pt-BR';
 import AsyncStorage from '@react-native-community/async-storage';
-import Intl from 'intl';
 import PropTypes from 'prop-types';
 
 import Button from '~/components/Button';

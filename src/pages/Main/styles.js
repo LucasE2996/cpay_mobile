@@ -4,9 +4,7 @@ import { colors } from '~/styles';
 
 export default StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: colors.background,
-    paddingTop: 10,
   },
   header: {
     flexDirection: 'row',
@@ -41,6 +39,12 @@ export default StyleSheet.create({
     fontSize: 16,
     color: colors.gray,
     fontWeight: 'bold',
+  },
+  boxTitlePayment: {
+    fontSize: 16,
+    color: colors.gray,
+    fontWeight: 'bold',
+    marginBottom: 15,
   },
   bigCard: {
     flexDirection: 'row',

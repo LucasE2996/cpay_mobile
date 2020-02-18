@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import AsyncStorage from '@react-native-community/async-storage';
-import Intl from 'intl';
+import 'intl';
 import PropTypes from 'prop-types';
 
 import 'intl/locale-data/jsonp/pt-BR';
@@ -24,6 +31,7 @@ export default function Main({ navigation }) {
   const [balance, setBalance] = useState(0);
   const [chargeCustomer, setChargeCustomer] = useState([]);
   const [modal, setModal] = useState(false);
+  const [hideEyes, setHideEyes] = useState(false);
 
   const closePanel = () => {
     setModal(false);
@@ -105,24 +113,37 @@ export default function Main({ navigation }) {
   ];
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerLogo}>
           <Image source={logo} style={styles.logo} />
           <Text style={styles.headerText}>C-Pay</Text>
         </View>
-        <TouchableOpacity onPress={() => console.warn('menu pressed.')}>
+        <TouchableOpacity onPress={() => setHideMenu(!hideMenu)}>
           <Image source={menu} style={styles.menu} />
         </TouchableOpacity>
       </View>
       <View style={styles.box}>
         <View style={styles.boxHeader}>
           <Text style={styles.boxTitle}>Saldo disponível</Text>
-          <FontAwesome name="eye" size={20} color={colors.gray} />
+          <TouchableOpacity
+            onPress={() => setHideEyes(!hideEyes)}
+            hitSlop={{ top: 0, bottom: 0, left: 0, right: 0 }}
+          >
+            <FontAwesome
+              name={hideEyes ? 'eye' : 'eye-slash'}
+              size={20}
+              color={colors.gray}
+            />
+          </TouchableOpacity>
         </View>
         <View style={styles.bigCard}>
           <View style={styles.bigCardLeft}>
-            <Text style={styles.bigCardText}>{formatter.format(balance)}</Text>
+            {hideEyes && (
+              <Text style={styles.bigCardText}>
+                {formatter.format(balance)}
+              </Text>
+            )}
           </View>
           <PlusButton callback={() => setModal(!modal)} />
         </View>
@@ -152,18 +173,12 @@ export default function Main({ navigation }) {
         </View>
       </View>
       <View style={styles.box}>
-        <Text style={styles.boxTitle}>Contas pendentes</Text>
-        <FlatList
-          style={{ marginTop: 15, height: 100 }}
-          vertical
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ padding: 10 }}
-          data={dummyTransactions}
-          keyExtractor={item => String(item.date)}
-          renderItem={({ item }) => <RowCard data={item} />}
-        />
+        <Text style={styles.boxTitlePayment}>Contas pendentes</Text>
+        {dummyTransactions.map(item => (
+          <RowCard data={item} />
+        ))}
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
