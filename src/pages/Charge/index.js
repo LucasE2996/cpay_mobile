@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import {
   View,
-  KeyboardAvoidingView,
+  ScrollView,
   Platform,
   SafeAreaView,
   TouchableWithoutFeedback,
   Keyboard,
+  Text,
 } from 'react-native';
 import { RNToasty } from 'react-native-toasty';
 
@@ -15,6 +16,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import PropTypes from 'prop-types';
 
 import Button from '~/components/Button';
+import ChargeDate from '~/components/ChargeDate';
 import InputGray from '~/components/InputGray';
 import InputGrayLarge from '~/components/InputGrayLarge';
 import api from '~/services/api';
@@ -68,7 +70,7 @@ export default function Charge({ navigation }) {
   });
 
   return (
-    <KeyboardAvoidingView
+    <ScrollView
       enabled
       behavior={Platform.OS === 'ios' ? 'padding' : null}
       style={{ flex: 1 }}
@@ -118,6 +120,10 @@ export default function Charge({ navigation }) {
                   setCharge({ ...charge, description: text });
                 }}
               />
+              <Text style={styles.label}>Criar notificações</Text>
+              <ChargeDate />
+              <ChargeDate />
+              <ChargeDate />
 
               <Button style={styles.button} onPress={handleSubmit}>
                 Gerar cobrança
@@ -126,7 +132,7 @@ export default function Charge({ navigation }) {
           </View>
         </TouchableWithoutFeedback>
       </SafeAreaView>
-    </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 
