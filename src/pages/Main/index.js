@@ -3,7 +3,10 @@ import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 import AsyncStorage from '@react-native-community/async-storage';
+import Intl from 'intl';
 import PropTypes from 'prop-types';
+
+import 'intl/locale-data/jsonp/pt-BR';
 
 import logo from '~/assets/logo.png';
 import menu from '~/assets/menu.png';

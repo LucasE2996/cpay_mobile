@@ -12,7 +12,7 @@ export default StyleSheet.create({
   },
   input: {
     fontSize: 14,
-    color: colors.black,
+    color: colors.white,
     marginLeft: 10,
     height: 39,
   },

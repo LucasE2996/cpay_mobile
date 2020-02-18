@@ -3395,6 +3395,11 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.2"
 
+intl@^1.2.5:
+  version "1.2.5"
+  resolved "https://registry.yarnpkg.com/intl/-/intl-1.2.5.tgz#82244a2190c4e419f8371f5aa34daa3420e2abde"
+  integrity sha1-giRKIZDE5Bn4Nx9ao02qNCDiq94=
+
 invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -5476,7 +5481,14 @@ react-native-screens@^2.0.0-beta.4:
   dependencies:
     debounce "^1.2.0"
 
-react-native-vector-icons@^6.6.0:
+react-native-toasty@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-toasty/-/react-native-toasty-1.0.0.tgz#11751b4dfa6ae9615dfa5083bf0da00c3674c545"
+  integrity sha512-aUCGDn5m9ua/esWkRcBPKuFdWb949/Fw1uiHdUv2P5b0Y/9euoUa9SqD7hvwPXgbnPMPT+FHzwaIXHdzwTwq8w==
+  dependencies:
+    react-native-vector-icons "6.6.0"
+
+react-native-vector-icons@6.6.0, react-native-vector-icons@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/react-native-vector-icons/-/react-native-vector-icons-6.6.0.tgz#66cf004918eb05d90778d64bd42077c1800d481b"
   integrity sha512-MImKVx8JEvVVBnaShMr7/yTX4Y062JZMupht1T+IEgbqBj4aQeQ1z2SH4VHWKNtWtppk4kz9gYyUiMWqx6tNSw==

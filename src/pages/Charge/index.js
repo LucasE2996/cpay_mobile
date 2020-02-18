@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   KeyboardAvoidingView,
@@ -7,21 +7,65 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
+import { RNToasty } from 'react-native-toasty';
 
+import 'intl/locale-data/jsonp/pt-BR';
+import AsyncStorage from '@react-native-community/async-storage';
+import Intl from 'intl';
 import PropTypes from 'prop-types';
 
 import Button from '~/components/Button';
 import InputGray from '~/components/InputGray';
 import InputGrayLarge from '~/components/InputGrayLarge';
+import api from '~/services/api';
 
 import styles from './styles';
 
 export default function Charge({ navigation }) {
   const [charge, setCharge] = useState([]);
+  const [token, setToken] = useState('');
 
   async function handleSubmit() {
-    console.log(charge);
+    try {
+      const response = await api.post(
+        '/invoices',
+        {
+          invoice: {
+            amount: charge.amount,
+            description: charge.description,
+            due_date: charge.due_date,
+            from_customer_id: 3,
+            to_customer_id: 5,
+          },
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      RNToasty.Success({ title: 'Cobrança gerada!' });
+      navigation.navigate('Main');
+    } catch (error) {
+      RNToasty.Error({ title: 'Ocorreu um erro!' });
+      console.log(error);
+    }
   }
+
+  useEffect(() => {
+    async function getToken() {
+      const asyncToken = await AsyncStorage.getItem('@cpay:user_token');
+
+      setToken(asyncToken);
+    }
+
+    getToken();
+  }, []);
+
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2,
+  });
 
   return (
     <KeyboardAvoidingView
@@ -38,7 +82,6 @@ export default function Charge({ navigation }) {
                 keyboardType="number-pad"
                 autoCorrect={false}
                 autoCapitalize="none"
-                maxLength={11}
                 values={charge.national_registry_code}
                 onChangeText={text => {
                   setCharge({ ...charge, national_registry_code: text });
@@ -46,18 +89,18 @@ export default function Charge({ navigation }) {
               />
               <InputGrayLarge
                 label="Valor a ser cobrado"
-                keyboardType="number-pad"
+                keyboardType="decimal-pad"
                 autoCorrect={false}
                 autoCapitalize="none"
-                defaultValue="R$ 0,00"
-                values={charge.amount}
+                defaultValue={formatter.format(0)}
+                values={formatter.format(charge.amount)}
                 onChangeText={text => {
                   setCharge({ ...charge, amount: text });
                 }}
               />
               <InputGray
                 label="Data de vencimento"
-                keyboardType="number-pad"
+                keyboardType="default"
                 autoCorrect={false}
                 autoCapitalize="none"
                 values={charge.due_date}
