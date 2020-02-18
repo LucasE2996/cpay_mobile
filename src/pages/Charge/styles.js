@@ -18,5 +18,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,
+    marginVertical: 30,
+  },
+  label: {
+    color: colors.white,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
 });
