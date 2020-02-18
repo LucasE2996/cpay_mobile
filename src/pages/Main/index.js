@@ -119,9 +119,6 @@ export default function Main({ navigation }) {
           <Image source={logo} style={styles.logo} />
           <Text style={styles.headerText}>C-Pay</Text>
         </View>
-        <TouchableOpacity onPress={() => setHideMenu(!hideMenu)}>
-          <Image source={menu} style={styles.menu} />
-        </TouchableOpacity>
       </View>
       <View style={styles.box}>
         <View style={styles.boxHeader}>
