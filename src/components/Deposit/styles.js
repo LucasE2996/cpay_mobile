@@ -58,4 +58,8 @@ export default StyleSheet.create({
     padding: heightPercentageToDP('2.1%'),
     marginVertical: widthPercentageToDP('6%'),
   },
+  boleto: {
+    color: colors.white,
+    fontSize: 20,
+  },
 });
